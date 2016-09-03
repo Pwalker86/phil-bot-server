@@ -11,5 +11,6 @@ end
 
 get "/ermahgerd/:string" do
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:string]}").get.value1
-  "#{response.gsub(/\//, "")}"
+  content_type :json
+  {:text => "#{response.gsub(/\//, "")}"}.to_json
 end
