@@ -1,4 +1,4 @@
-require "sinatra"
+require 'sinatra'
 require 'blanket'
 
 get "/" do
@@ -9,7 +9,7 @@ get "/insults/get" do
   "#{Blanket.wrap("http://quandyfactory.com/insult/json").get.insult}"
 end
 
-get "/ermagherd/:string" do
+get "/ermahgerd/:string" do
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:string]}").get.value1
   "#{response.gsub(/\//, "")}"
 end
