@@ -4,6 +4,7 @@ GEM
     blanket_wrapper (3.0.2)
       httparty
       recursive-open-struct
+    dotenv (2.1.0)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     multi_xml (0.5.5)
@@ -22,6 +23,7 @@ PLATFORMS
 
 DEPENDENCIES
   blanket_wrapper
+  dotenv
   sinatra
 
 BUNDLED WITH

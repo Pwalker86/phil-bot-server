@@ -1,5 +1,7 @@
+require 'dotenv'
 require 'sinatra'
 require 'blanket'
+Dotenv.load
 
 get "/" do
   "Hello World!"
@@ -10,7 +12,13 @@ get "/insults/get" do
 end
 
 get "/ermahgerd/:string" do
+  verify_token
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:string]}").get.value1
   content_type :json
   {:text => "#{response.gsub(/\//, "")}"}.to_json
+end
+
+
+def verify_token
+  status 404 if params[:token] != ENV['SLACK_TOKEN']
 end
