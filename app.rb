@@ -11,7 +11,7 @@ get "/insults/get" do
   "#{Blanket.wrap("http://quandyfactory.com/insult/json").get.insult}"
 end
 
-get "/ermahgerd" do
+post "/ermahgerd" do
   # verify_token
   puts params
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:text]}").get.value1
