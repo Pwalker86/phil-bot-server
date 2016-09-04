@@ -13,10 +13,18 @@ end
 
 post "/ermahgerd" do
   # verify_token
-  puts params
-  response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:text]}").get.value1
+  message = params[:text].gsub('ternslate ', '')
+  response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{message}").get.value1
   content_type :json
   {:text => "#{response.gsub(/\//, "")}"}.to_json
+end
+
+get "/ermahgerd" do
+  # verify_token
+  message = params[:text].gsub('ternslate ', '')
+  response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{message}").get.value1
+  content_type :json
+  {:text => response, :response_type => "in_channel"}.to_json
 end
 
 
