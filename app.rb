@@ -11,9 +11,10 @@ get "/insults/get" do
   "#{Blanket.wrap("http://quandyfactory.com/insult/json").get.insult}"
 end
 
-get "/ermahgerd/:string" do
-  verify_token
-  response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:string]}").get.value1
+get "/ermahgerd" do
+  # verify_token
+  puts params
+  response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{params[:text]}").get.value1
   content_type :json
   {:text => "#{response.gsub(/\//, "")}"}.to_json
 end
