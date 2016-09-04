@@ -12,7 +12,7 @@ get "/insults/get" do
 end
 
 post "/ermahgerd" do
-  # verify_token
+  verify_token
   message = params[:text].gsub('ternslate ', '')
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{message}").get.value1
   content_type :json
@@ -20,7 +20,7 @@ post "/ermahgerd" do
 end
 
 get "/ermahgerd" do
-  # verify_token
+  verify_token
   message = params[:text].gsub('ternslate ', '')
   response = Blanket.wrap("http://ermahgerd.herokuapp.com/ternslert?value1=#{message}").get.value1
   content_type :json
